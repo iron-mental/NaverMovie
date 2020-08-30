@@ -1,9 +1,11 @@
 package com.example.navermovie
 
-import android.graphics.drawable.Drawable
+import com.google.gson.annotations.SerializedName
 
-data class Homefeed (val items : List<Item>)
-data class Item(
+
+
+data class MovieItem(
+    @SerializedName("title")
     val title : String,
     val link : String,
     val image : String,
@@ -11,5 +13,6 @@ data class Item(
     val pubDate : String,
     val director : String,
     val actor : String,
+    @SerializedName("usr_rating")
     val usrRating : String
 )
