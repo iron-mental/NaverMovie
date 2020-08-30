@@ -2,6 +2,14 @@ package com.example.navermovie
 
 import android.graphics.drawable.Drawable
 
-class MovieItem (val image: Drawable, val title: String){
-
-}
+data class Homefeed (val items : List<Item>)
+data class Item(
+    val title : String,
+    val link : String,
+    val image : String,
+    val subtitle : String,
+    val pubDate : String,
+    val director : String,
+    val actor : String,
+    val usrRating : String
+)
