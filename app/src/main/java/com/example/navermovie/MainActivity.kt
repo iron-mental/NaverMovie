@@ -3,7 +3,10 @@ package com.example.navermovie
 import android.content.Context
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.telecom.Call
 import android.view.inputmethod.InputMethodManager
+import android.widget.LinearLayout
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.gson.GsonBuilder
 import kotlinx.android.synthetic.main.activity_main.*
 import okhttp3.*
@@ -67,7 +70,7 @@ class MainActivity : AppCompatActivity() {
                 //Gson을 Kotlin에서 사용 가능한 object로 만든다.
                 val gson = GsonBuilder().create()
                 //아! 이렇게 하는구나
-                val homefeed = gson.fromJson(body, HomeFeed::class.java)
+                val homefeed = gson.fromJson(body, Homefeed::class.java)
                 //println(homefeed)
 
                 //어답터를 연결하자. 메인쓰레드 변경하기 위해 이 메소드 사용

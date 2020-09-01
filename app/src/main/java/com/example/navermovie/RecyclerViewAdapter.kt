@@ -10,14 +10,14 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.movie_item_layout.view.*
 
-class RecyclerViewAdapter(pitrivate val homeFeed: HomeFeed) :
+class RecyclerViewAdapter(private val homefeed: Homefeed) :
     RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>(){
     override fun getItemCount(): Int {
-        return homeFeed.items.count()
+        return homefeed.items.count()
     }
 
     override fun onBindViewHolder(holder: RecyclerViewAdapter.ViewHolder, position: Int) {
-        holder.bind(homeFeed.items[position])
+        holder.bind(homefeed.items[position])
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):
