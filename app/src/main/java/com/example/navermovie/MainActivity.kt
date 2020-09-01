@@ -69,7 +69,6 @@ class MainActivity : AppCompatActivity() {
 
                 //Gson을 Kotlin에서 사용 가능한 object로 만든다.
                 val gson = GsonBuilder().create()
-                //아! 이렇게 하는구나
                 val homefeed = gson.fromJson(body, Homefeed::class.java)
                 //println(homefeed)
 
@@ -84,5 +83,3 @@ class MainActivity : AppCompatActivity() {
             }
         })
     }
-
-}
