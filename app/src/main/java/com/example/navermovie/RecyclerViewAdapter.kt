@@ -7,31 +7,29 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.movie_item_layout.view.*
 
-class RecyclerViewAdapter(private val homefeed: Homefeed) :
+class RecyclerViewAdapter(private val test: MovieSearchRequest) :
     RecyclerView.Adapter<RecyclerViewAdapter.ViewHolder>(){
     override fun getItemCount(): Int {
-        return homefeed.items.count()
+        return test.items.count()
     }
 
-    override fun onBindViewHolder(holder: RecyclerViewAdapter.ViewHolder, position: Int) {
-        holder.bind(homefeed.items[position])
+    override fun onBindViewHolder(holder: ViewHolder, position: Int) {
+        holder.bind(test.items[position])
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int):
-            RecyclerViewAdapter.ViewHolder {
+            ViewHolder {
         var view = LayoutInflater.from(parent.context)
             .inflate(R.layout.movie_item_layout, parent, false)
-        return RecyclerViewAdapter.ViewHolder(view)
+        return ViewHolder(view)
     }
 
     class ViewHolder(private val view: View) : RecyclerView.ViewHolder(view) {
-        fun bind(data: Item){
-            Glide.with(view.context).load(data.image)
-                .apply(RequestOptions().override(300, 450))
-                .apply(RequestOptions.centerCropTransform())
+        fun bind(data: MovieItem){
+            Glide.with(view.context)
+                .load(data.image)
                 .into(view.imageView)
             itemView.textView_title.text = data.title
             itemView.textView_actor.text = "출연 ${data.actor}"
@@ -41,7 +39,7 @@ class RecyclerViewAdapter(private val homefeed: Homefeed) :
             itemView.setOnClickListener{
                 val webpage = Uri.parse("${data.link}")
                 val webIntent = Intent(Intent.ACTION_VIEW, webpage)
-                view.getContext().startActivity(webIntent);
+                view.context.startActivity(webIntent);
             }
         }
     }
